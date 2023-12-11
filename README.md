@@ -2,8 +2,9 @@
 This is the Rucio policy package for Rubin.
 
 ## How to use this policy package
-* Make sure the directory containing the `RubinRucioPolicy` directory is in the `PYTHONPATH` for the Rucio server.
-* Set `package = RubinRucioPolicy` in the `policy` section of the Rucio configuration file.
+* Mount the policy package files into /opt/permissions/rubin
+* `/opt/permissions/rubin` should be on the `PYTHONPATH` for the container
+* Set `package = rubin` in the `policy` section of the Rucio configuration file.
 
 ## Source files
 * `__init__.py` - registers the SURL and LFN2PFN algorithms when the package is loaded.
