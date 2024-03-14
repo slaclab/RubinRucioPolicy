@@ -4,10 +4,10 @@ SUPPORTED_VERSION = ["1.29", "1.30", "1.31", "32", "33"]
 #    return { 'lfn2pfn': { 'RUBIN': lfn2pfn_RUBIN }, 'surl': { 'rubin': construct_surl_rubin } }
 
 def get_algorithms():
-    return { 'lfn2pfn': { 'lsst_butler': lfn2pfn_lsst_bulter }, 
+    return { 'lfn2pfn': { 'lsst_butler': lfn2pfn_lsst_butler }, 
              'surl': { 'lsst_usdftape': construct_surl_lsst_usdftape } }
 
-def lfn2pfn_lsst_bulter(scope, name, rse, rse_attrs, protocol_attrs):
+def lfn2pfn_lsst_butler(scope, name, rse, rse_attrs, protocol_attrs):
     """
     Given a LFN, convert it directly to a path using the mapping:
     note: scopes do not appear in pfn in Rubin/LSST Butler
