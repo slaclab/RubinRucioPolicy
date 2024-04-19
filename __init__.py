@@ -36,5 +36,5 @@ def construct_surl_lsst_usdftape(dsn: str, scope: str, filename: str) -> str:
     @rtype: str
     """
     # Preliminary, we are still testing the surl() function. 
-    pfn = '/archive/' + dsn + "#/" + scope + ":" + filename
+    pfn = '/archive/' + dsn + "~/" + scope + ":" + filename
     return pfn.replace("%", "%25").replace("#", "%23")
