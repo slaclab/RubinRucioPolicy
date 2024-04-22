@@ -55,9 +55,10 @@ R_SCOPE = {"description": "Scope name",
 
 NAME_LENGTH = 500
 
+# '~' is reserved for Tape RSE
 NAME = {"description": "Data Identifier name",
         "type": "string",
-        "pattern": r"^[\w\.\-\+/]{1,%s}$" % NAME_LENGTH}
+        "pattern": r"^[\w\.\-\+\~/]{1,%s}$" % NAME_LENGTH}
 
 R_NAME = {"description": "Data Identifier name",
           "type": "string",
