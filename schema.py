@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright European Organization for Nuclear Research (CERN) since 2012
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from jsonschema import validate, ValidationError
+from jsonschema import ValidationError, validate
 
 from rucio.common.exception import InvalidObject
 
@@ -21,7 +20,8 @@ ACCOUNT_LENGTH = 25
 
 ACCOUNT = {"description": "Account name",
            "type": "string",
-           "pattern": "^[a-z0-9-_]{1,%s}$" % ACCOUNT_LENGTH}
+           "maxLength": ACCOUNT_LENGTH,
+           "pattern": "^[a-z0-9-_]+$"}
 
 ACCOUNTS = {"description": "Array of accounts",
             "type": "array",
@@ -47,7 +47,8 @@ SCOPE_LENGTH = 25
 
 SCOPE = {"description": "Scope name",
          "type": "string",
-         "pattern": "^[a-zA-Z\.\-\\0-9/_]{1,%s}$" % SCOPE_LENGTH}
+         "maxLength": SCOPE_LENGTH,
+         "pattern": "^[a-zA-Z_\\-.0-9]+$"}
 
 R_SCOPE = {"description": "Scope name",
            "type": "string",
@@ -55,10 +56,10 @@ R_SCOPE = {"description": "Scope name",
 
 NAME_LENGTH = 500
 
-# '~' is reserved for Tape RSE
 NAME = {"description": "Data Identifier name",
         "type": "string",
-        "pattern": r"^[\w\.\-\+\~/]{1,%s}$" % NAME_LENGTH}
+        "maxLength": NAME_LENGTH,
+        "pattern": r"^[\w\.\-\+\~/]*$"}
 
 R_NAME = {"description": "Data Identifier name",
           "type": "string",
@@ -290,7 +291,7 @@ R_DIDS = {"description": "Array of Data Identifiers(DIDs)",
           "minItems": 1,
           "maxItems": 1000}
 
-ATTACHMENT = {"description": "Attachement",
+ATTACHMENT = {"description": "Attachment",
               "type": "object",
               "properties": {"scope": SCOPE,
                              "name": NAME,
@@ -429,4 +430,4 @@ def validate_schema(name, obj):
         if obj:
             validate(obj, SCHEMAS.get(name, {}))
     except ValidationError as error:  # NOQA, pylint: disable=W0612
-        raise InvalidObject("Problem validating %(name)s : %(error)s" % locals())
+        raise InvalidObject(f'Problem validating {name}: {error}')
