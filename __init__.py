@@ -1,7 +1,4 @@
-SUPPORTED_VERSION = ["1.29", "1.30", "1.31", "32", "33", "34", "35"]
-
-#def get_algorithms():
-#    return { 'lfn2pfn': { 'RUBIN': lfn2pfn_RUBIN }, 'surl': { 'rubin': construct_surl_rubin } }
+SUPPORTED_VERSION=[">=36.0"]
 
 def get_algorithms():
     return { 'lfn2pfn': { 'lsst_butler': lfn2pfn_lsst_butler }, 
