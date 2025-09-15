@@ -674,7 +674,7 @@ def perm_declare_bad_file_replicas(issuer: "InternalAccount", kwargs: dict[str, 
     :param session: The DB session to use
     :returns: True if account is allowed, otherwise False
     """
-    return _is_root(issuer)
+    return _is_root(issuer) or has_account_attribute(account=issuer, key='admin', session=session)
 
 
 def perm_declare_suspicious_file_replicas(issuer: "InternalAccount", kwargs: dict[str, Any], *, session: "Optional[Session]" = None) -> bool:
@@ -1083,7 +1083,7 @@ def perm_add_bad_pfns(issuer: "InternalAccount", kwargs: dict[str, Any], *, sess
     :param session: The DB session to use
     :returns: True if account is allowed, otherwise False
     """
-    return _is_root(issuer)
+    return _is_root(issuer) or has_account_attribute(account=issuer, key='admin', session=session)
 
 
 def perm_remove_did_from_followed(issuer: "InternalAccount", kwargs: dict[str, Any], *, session: "Optional[Session]" = None) -> bool:
