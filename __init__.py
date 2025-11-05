@@ -1,8 +1,9 @@
 SUPPORTED_VERSION=[">=36.0"]
 
 def get_algorithms():
-    return { 'lfn2pfn': { 'lsst_butler': lfn2pfn_lsst_butler }, 
-             'surl': { 'lsst_usdftape': construct_surl_lsst_usdftape } }
+    return {'lfn2pfn': {'lsst_butler': lfn2pfn_lsst_butler},
+            'non_deterministic_pfn': {'lsst_usdftape': construct_surl_lsst_usdftape}}
+
 
 def lfn2pfn_lsst_butler(scope, name, rse, rse_attrs, protocol_attrs):
     """
@@ -23,6 +24,7 @@ def lfn2pfn_lsst_butler(scope, name, rse, rse_attrs, protocol_attrs):
     del rse_attrs
     del protocol_attrs
     return '%s' % name
+
 
 def construct_surl_lsst_usdftape(dsn: str, scope: str, filename: str) -> str:
     """
