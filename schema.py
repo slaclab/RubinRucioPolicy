@@ -59,7 +59,7 @@ NAME_LENGTH = 500
 NAME = {"description": "Data Identifier name",
         "type": "string",
         "maxLength": NAME_LENGTH,
-        "pattern": r"^[\w\.\-\+\~/]*$"}
+        "pattern": r"^[\w\.\-\+\~][\w\.\-\+\~/]*$"}
 
 R_NAME = {"description": "Data Identifier name",
           "type": "string",
